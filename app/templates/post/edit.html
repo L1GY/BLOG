@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}编辑文章 - {{ post.title }} - 我的博客{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="mb-4">编辑文章: {{ post.title }}</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-3">
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="form-control", placeholder="文章标题") }}
+                        {% if form.title.errors %}
+                            <div class="text-danger small">
+                                {% for error in form.title.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.summary.label(class="form-label") }}
+                        {{ form.summary(class="form-control", rows="3", placeholder="文章摘要（可选）") }}
+                        {% if form.summary.errors %}
+                            <div class="text-danger small">
+                                {% for error in form.summary.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.featured_image.label(class="form-label") }}
+                        {{ form.featured_image(class="form-control", placeholder="https://example.com/image.jpg") }}
+                        {% if form.featured_image.errors %}
+                            <div class="text-danger small">
+                                {% for error in form.featured_image.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.tags.label(class="form-label") }}
+                        {{ form.tags(class="form-control", placeholder="技术, 教程, Flask") }}
+                        <small class="text-muted">用逗号分隔多个标签</small>
+                        {% if form.tags.errors %}
+                            <div class="text-danger small">
+                                {% for error in form.tags.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.content.label(class="form-label") }}
+                        {{ form.content(class="form-control", rows="15", placeholder="文章内容...") }}
+                        {% if form.content.errors %}
+                            <div class="text-danger small">
+                                {% for error in form.content.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            {{ form.is_published(class="form-check-input") }}
+                            {{ form.is_published.label(class="form-check-label") }}
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('post.detail', slug=post.slug) }}" class="btn btn-secondary">取消</a>
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

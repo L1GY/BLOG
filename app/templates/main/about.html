@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}关于我们 - 我的博客{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="mb-4">关于我们</h1>
+        <div class="card">
+            <div class="card-body">
+                <h2>欢迎来到我的博客</h2>
+                <p>这是一个使用Flask框架构建的博客网站，采用MySQL数据库存储数据。</p>
+                
+                <h3>技术栈</h3>
+                <ul>
+                    <li><strong>后端：</strong>Python Flask</li>
+                    <li><strong>数据库：</strong>MySQL</li>
+                    <li><strong>前端：</strong>Bootstrap 5, jQuery</li>
+                    <li><strong>ORM：</strong>SQLAlchemy</li>
+                    <li><strong>迁移工具：</strong>Flask-Migrate</li>
+                </ul>
+                
+                <h3>功能特点</h3>
+                <ul>
+                    <li>用户注册与登录</li>
+                    <li>文章发布与管理</li>
+                    <li>评论系统</li>
+                    <li>标签分类</li>
+                    <li>搜索功能</li>
+                    <li>响应式设计</li>
+                </ul>
+                
+                <p>如果您有任何问题或建议，请随时联系我们。</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
